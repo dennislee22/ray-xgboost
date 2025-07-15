@@ -1,5 +1,6 @@
 # Ray XGBoost
 
+<img width="700" height="637" alt="image" src="https://github.com/user-attachments/assets/5dd49097-dcfc-427c-ba68-6e9bf9c0a585" />
 
 # Tips
 1. Ray Client has architectural limitations and may not work as expected when using Ray for ML workloads (like Ray Tune or Ray Train).
