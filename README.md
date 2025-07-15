@@ -13,3 +13,7 @@
 4. 2025-07-15 06:45:46,383	WARNING interfaces.py:140 -- More than 3GB of driver memory used to store Ray Data block data and metadata. This job may exit if driver memory is insufficient.
 
 This can happen when many tiny blocks are created. Check the block size using Dataset.stats() and see https://docs.ray.io/en/latest/data/performance-tips.html for mitigation.
+
+https://docs.ray.io/en/latest/ray-core/scheduling/memory-management.html
+
+3
