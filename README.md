@@ -67,7 +67,7 @@ The outcome describes three crucial trade-offs: speed vs. complexity, generaliza
 
 
 ## Tips
-1. Ray Client has architectural limitations and may not work as expected when using Ray for ML workloads (like `Ray Tune` or `Ray Train`).
+1. `Ray Client` has architectural limitations and may not work as expected when using Ray for ML workloads (like `Ray Tune` or `Ray Train`).
    - Reference: https://docs.ray.io/en/latest/cluster/running-applications/job-submission/ray-client.html
 
 2. In Ray, shared memory is primarily used by the Ray object store to efficiently manage and transfer large objects between different actors and tasks. Using shared memory for large objects significantly improves performance by reducing the time required to transfer data between tasks and actors. This is particularly important when working with ML models or large datasets that don't fit into local memory. If the /dev/shm partition is too small or unavailable, Ray will spill objects to /tmp directory, which is less performant.
