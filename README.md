@@ -11,12 +11,17 @@ Before diving into the results, it's important to understand what Ray is. Unlike
 
 This article describes the steps to use Ray with XGBoost (on a Kubernetes cluster) to build a model for helping telco to check if a particular MSISDN/user is fradulent based on the captured CDR. The steps to achieve this use case include:
 
-1. Create synthetic dataset (in batch to prevent running into OOM problem).
-2. Use dataframe to create feature engineering of the dataset (dask-train-xgboost.ipynb).
-3. Train and test the model using XGBoost (dask-train-xgboost.ipynb).
+1. Create [synthetic dataset]() in batch to prevent running into OOM problem.
+2. Use dataframe to create feature engineering of the dataset [ray-xgboost.ipynb](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb).
+3. Train and test the model using XGBoost [ray-xgboost.ipynb](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb).
 
 ## Prerequisites
-1. Configure sufficient shared memory size (/dev/shm). 
+1. Install the latest Ray module.
+```
+$ pip install ray[all]
+```
+
+2. Configure sufficient shared memory size (/dev/shm). 
 
 <img width="700" height="637" alt="image" src="https://github.com/user-attachments/assets/5dd49097-dcfc-427c-ba68-6e9bf9c0a585" />
 
@@ -35,7 +40,7 @@ mpwk3j51zc30vv5w   5/5     Running   0          5m9s   10.42.2.218   ecs-w-02.dl
 rzsr3vyehkxe53nu   5/5     Running   0          5m9s   10.42.1.214   ecs-w-03.dlee5.cldr.example   <none>           <none>
 ```
 
-## Step 2: Train the Model with CSV Dataset
+## Step 2: Train the Model with the CSV Dataset
 1. Run `ray.data` to ReadCSV the dataset input and split the dataset into training, validation and test portions.
 2. Use `pandas` to create feature engineering dataFrame based on the csv dataset.
 3. Run `ray.data` to perform feature engineering.
@@ -52,7 +57,7 @@ The outcome describes three crucial trade-offs: speed vs. complexity, generaliza
 
 | Metric     | [Dask + XGBoost](https://github.com/dennislee22/dask-xgboost/blob/main/dask-train-xgboost.ipynb) | [Ray + XGBoost](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb) | 
 | :---      |     :---:           |   ---:         |
-| csv Dataset Size | 3GB    | 3GB      | 
+| CSV Dataset Size | 3GB    | 3GB      | 
 | Total workers    | 5      | 5        | 
 | RAM per worker | 8GB      | 20GB                | 
 | Processing Time  | 346.85 sec     | 237.07 sec   | 
