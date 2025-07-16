@@ -1,5 +1,5 @@
 # Ray-XGBoost
-![xgboost-ray](https://github.com/user-attachments/assets/3093e66a-5183-41c8-9c54-336937bee40b)
+![xgboost-ray](https://github.com/user-attachments/assets/3af1897f-b6dc-4077-bd35-e2220a23eee5)
 
 In my earlier article, I discussed how the combination of [Dask and XGBoost](https://github.com/dennislee22/dask-xgboost) can effectively overcome limited RAM when training models on massive datasets. Building on the same use case—training a telco fraud detection model, I now explore an alternative distributed framework: [Ray](https://docs.ray.io/), used in conjunction with XGBoost.
 
