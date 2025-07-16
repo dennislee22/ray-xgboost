@@ -62,7 +62,7 @@ The outcome describes three crucial trade-offs: speed vs. complexity, generaliza
 | CSV Dataset Size | 3GB    | 3GB      | 
 | Total workers    | 5      | 5        | 
 | RAM per worker | 8GB      | 20GB                | 
-| Processing Time  | 346.85 sec     | 237.07 sec   | 
+| Processing Time  | 507.69 sec     | 276.65 sec   | 
 | Top Feature  | mobility (Score: 177) | total_calls (Score: 9) |
 
 
