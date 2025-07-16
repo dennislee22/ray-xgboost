@@ -50,39 +50,16 @@ The outcome describes three crucial trade-offs: speed vs. complexity, generaliza
 
 3. The stark difference is in the feature importances. The Dask model uses all available features with high scores. Dask built the exact model I asked for: a forest with a fixed number of trees. Ray had a different goal, build the best possible model without overfitting. It used a validation set to monitor performance, and as soon as the model stopped improving, it stopped training. The Ray-XGBoost model is dramatically simpler, with much lower scores and completely ignoring the mobility feature, which Dask considered paramount. This is a direct result of early stopping being a default practice in `ray.train`. This resulted in a leaner, more generalized model that was faster to train and, in this case, more accurate on the test set. `ray.train.xgboost.XGBoostTrainer` is more than just a parallel .fit() command. It’s an "opinionated" tool, designed with production best practices—like fault tolerance and automated early stopping—built right in.
 
-
-Metric
-
-Dask + XGBoost
-
-Ray + XGBoost
-
-Processing Time
-
-346.85 seconds
-
-237.07 seconds
-
-Test Accuracy
-
-99.99% (3 errors)
-
-100% (0 errors)
-
-Memory Observation
-
-Low I/O overhead
-
-High I/O overhead (OOM on <20GB workers)
-
-Top Feature
-
-mobility (Score: 178)
-
-total_calls (Score: 20)
+| Metric     | [Dask + XGBoost](https://github.com/dennislee22/dask-xgboost/blob/main/dask-train-xgboost.ipynb) | [Ray + XGBoost](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb) | 
+| :---      |     :---:           |   ---:         |
+| csv Dataset Size | 3GB    | 3GB      | 
+| Total workers    | 5      | 5        | 
+| RAM per worker | 8GB      | 20GB                | 
+| Processing Time  | 346.85 sec     | 237.07 sec   | 
+| Top Feature  | mobility (Score: 177) | total_calls (Score: 9) |
 
 
-# Tips
+## Tips
 1. Ray Client has architectural limitations and may not work as expected when using Ray for ML workloads (like `Ray Tune` or `Ray Train`).
    - Reference: https://docs.ray.io/en/latest/cluster/running-applications/job-submission/ray-client.html
 
