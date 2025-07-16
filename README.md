@@ -11,7 +11,7 @@ Before diving into the results, it's important to understand what Ray is. Unlike
 
 This article describes the steps to use Ray with XGBoost (on a Kubernetes cluster) to build a model for helping telco to check if a particular MSISDN/user is fradulent based on the captured CDR. The steps to achieve this use case include:
 
-1. Create [synthetic dataset]() in batch to prevent running into OOM problem.
+1. Create [synthetic dataset](https://github.com/dennislee22/ray-xgboost/blob/main/create-synthetic-cdr.py) in batch to prevent running into OOM error.
 2. Use dataframe to create feature engineering of the dataset [ray-xgboost.ipynb](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb).
 3. Train and test the model using XGBoost [ray-xgboost.ipynb](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb).
 
