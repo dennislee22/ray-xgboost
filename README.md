@@ -50,7 +50,7 @@ rzsr3vyehkxe53nu   5/5     Running   0          5m9s   10.42.1.214   ecs-w-03.dl
 ## The Result
 The outcome describes three crucial trade-offs: speed vs. complexity, generalization vs. thoroughness, and performance vs. resource cost.
 
-1. My first attempt to run the Ray job failed. Workers with less than 20GB of RAM were consistently crashing with OOM errors. Dask, by contrast, handled this with much less memory per worker. This happens because Ray's powerful shared-memory object store, wrequires a significant memory upfront. It manages data as shared objects for the entire cluster, which has a higher initial resource cost than Dask's more direct approach of having each worker manage its own chunk of a DataFrame.
+1. My first attempt to run the Ray job failed. Workers with less than 20GB of RAM were consistently crashing with OOM errors. Dask, by contrast, handled this with much less memory per worker. This happens because Ray's powerful shared-memory object store, requires a significant memory upfront. Ray reserves 30% of available memory in the node. 
    
 <img width="700" height="725" alt="image" src="https://github.com/user-attachments/assets/9468e715-8a7c-46be-a892-07eae5f2be9f" />
 
