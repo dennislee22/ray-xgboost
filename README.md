@@ -58,12 +58,12 @@ The outcome describes three crucial trade-offs: speed vs. complexity, generaliza
 3. Ray has a different goal, builds the best possible model without overfitting. It used a validation set to monitor performance, and as soon as the model stopped improving, it stopped training. The Ray-XGBoost model is dramatically simpler, with much lower scores and completely ignoring the mobility feature, which Dask considered paramount. This is a direct result of early stopping being a default practice in `ray.train`. This resulted in a leaner, more generalized model that was faster to train and, in this case, more accurate on the test set. `ray.train.xgboost.XGBoostTrainer` is more than just a parallel .fit() command. It’s an "opinionated" tool, designed with production best practices, like fault tolerance and automated early stopping built right in.
 
 | Metric     | [Dask + XGBoost](https://github.com/dennislee22/dask-xgboost/blob/main/dask-train-xgboost.ipynb) | [Ray + XGBoost](https://github.com/dennislee22/ray-xgboost/blob/main/ray-xgboost.ipynb) | 
-| :---      |     :---:           |   ---:         |
+| :---      |     :---:           |   :---:         |
 | CSV Dataset Size | 3GB    | 3GB      | 
 | Total workers    | 5      | 5        | 
 | RAM per worker | 8GB      | 20GB                | 
-| Processing Time  | 507.69 sec     | 276.65 sec   | 
-| Top Feature  | mobility (Score: 177) | total_calls (Score: 9) |
+| Processing Time  | 507.69 sec     | 237.07 sec   | 
+| Top Feature  | mobility (Score: 177) | total_calls (Score: 20) |
 
 
 ## Tips
